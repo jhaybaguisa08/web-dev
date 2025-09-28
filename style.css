@@ -2,13 +2,14 @@
    GLOBAL VARIABLES
 ------------------------- */
 :root {
-  --bg-main: linear-gradient(135deg, #1d1d29, #292937); /* Smooth gradient */
-  --bg-secondary: #00ddff;
-  --accent: #00d5ff;
-  --accent-light: #273c48;
-  --text-main: #f5f5f5;
-  --text-muted: #bbbbbb;
-  --shadow: rgba(0, 0, 0, 0.3);
+  --bg-main: radial-gradient(circle at top, #050507, #0a0a12); /* darker gradient */
+  --bg-secondary: #00f5ff;
+  --accent: #00eaff; /* neon cyan */
+  --accent-light: #33f6ff;
+  --accent-dark: #006b77;
+  --text-main: #f8fefe;
+  --text-muted: #9ca3af;
+  --shadow: rgba(0, 255, 255, 0.3);
   --radius: 12px;
   --transition: all 0.3s ease-in-out;
 }
@@ -31,43 +32,38 @@ body {
    HEADER
 ------------------------- */
 header {
-  background: rgb(0, 204, 255);
+  background: rgba(0, 255, 255, 0.1);
+  border-bottom: 2px solid var(--accent);
   color: var(--text-main);
-  padding: 20px 10px;
+  padding: 20px 15px;
   text-align: center;
-  box-shadow: 0 4px 15px var(--shadow);
+  box-shadow: 0 0 20px var(--shadow);
   position: sticky;
   top: 0;
   z-index: 1000;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  backdrop-filter: blur(6px);
+  backdrop-filter: blur(8px);
 }
 
 header h2 {
   margin: 0;
   font-size: 1.8rem;
   letter-spacing: 1px;
-  color: var(--accent-light);
+  color: var(--accent);
   animation: textGlow 2s infinite alternate;
-}
-
-header p {
-  font-size: 0.9em;
-  color: var(--text-muted);
-  margin: 3px 0;
 }
 
 .custom-link {
   text-decoration: none;
-  color: var(--accent-light);
+  color: var(--text-main);
   transition: var(--transition);
 }
 
 .custom-link:hover {
   color: var(--accent);
-  text-shadow: 0 0 6px var(--accent-light);
+  text-shadow: 0 0 10px var(--accent);
 }
 
 /* -------------------------
@@ -78,13 +74,14 @@ header p {
   background: none;
   border: none;
   font-size: 1.8rem;
-  color: var(--accent-light);
+  color: var(--accent);
   cursor: pointer;
   transition: var(--transition);
 }
 
 .menu-toggle:hover {
-  color: var(--accent);
+  color: var(--accent-light);
+  text-shadow: 0 0 8px var(--accent-light);
 }
 
 /* -------------------------
@@ -99,51 +96,35 @@ header p {
 .sidebar {
   width: 260px;
   padding: 20px;
-  background: rgba(37, 131, 160, 0.95);
-  border-right: 1px solid #444;
-  box-shadow: inset 0 0 8px var(--shadow);
+  background: rgba(0, 20, 25, 0.95);
+  border-right: 2px solid var(--accent-dark);
+  box-shadow: 0 0 15px var(--shadow);
   overflow-y: auto;
   transition: transform 0.4s ease-in-out;
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(12px);
   border-radius: 0 var(--radius) var(--radius) 0;
 }
 
 .sidebar h3 {
-  color: var(--accent-light);
+  color: var(--accent);
   text-align: center;
-}
-
-.sidebar ul {
-  list-style: none;
-  padding-left: 0;
-  margin: 0;
-}
-
-.sidebar li {
-  margin: 8px 0;
-  font-size: 0.95rem;
-}
-
-.sidebar li ul {
-  margin-left: 15px;
-  padding-left: 0;
-  border-left: 2px solid #555;
+  text-shadow: 0 0 8px var(--accent);
 }
 
 .sidebar a {
   text-decoration: none;
   color: var(--text-main);
-  padding: 6px 8px;
+  padding: 8px 10px;
   display: inline-block;
   border-radius: var(--radius);
   transition: var(--transition);
 }
 
 .sidebar a:hover {
-  background: #282830;
-  color: var(--accent-light);
+  background: rgba(0, 255, 255, 0.1);
+  color: var(--accent);
   transform: translateX(5px);
-  box-shadow: 0 2px 6px var(--shadow);
+  box-shadow: 0 0 10px var(--shadow);
 }
 
 /* -------------------------
@@ -151,51 +132,19 @@ header p {
 ------------------------- */
 .content {
   flex: 1;
-  padding: 15px;
-  background: rgb(40, 40, 46);
+  padding: 20px;
+  background: rgba(5, 10, 15, 0.9);
   border-radius: var(--radius) 0 0 var(--radius);
-  box-shadow: inset 0 0 10px var(--shadow);
+  box-shadow: inset 0 0 15px var(--shadow);
   animation: fadeIn 0.8s ease-in-out;
-  backdrop-filter: blur(4px);
 }
 
 iframe {
   width: 100%;
   height: 100%;
-  border: none;
+  border: 2px solid var(--accent-dark);
   border-radius: var(--radius);
-}
-
-/* -------------------------
-   SLIDING SIDEBAR (MOBILE)
-------------------------- */
-@media (max-width: 768px) {
-  .container {
-    position: relative;
-    flex-direction: column;
-  }
-
-  .sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%;
-    max-width: 260px;
-    transform: translateX(-100%);
-    z-index: 2000;
-  }
-
-  .sidebar.active {
-    transform: translateX(0);
-  }
-
-  .content {
-    width: 100%;
-  }
-
-  .menu-toggle {
-    display: block;
-  }
+  box-shadow: 0 0 12px rgba(0, 255, 255, 0.4);
 }
 
 /* -------------------------
@@ -206,16 +155,50 @@ iframe {
 }
 
 .sidebar::-webkit-scrollbar-track {
-  background: #00d9ff;
+  background: #0f141a;
 }
 
 .sidebar::-webkit-scrollbar-thumb {
   background: var(--accent);
   border-radius: 4px;
+  box-shadow: 0 0 6px var(--shadow);
 }
 
 .sidebar::-webkit-scrollbar-thumb:hover {
   background: var(--accent-light);
+}
+
+/* -------------------------
+   STYLED BUTTON
+------------------------- */
+.button-box {
+  text-align: center;
+  margin: 30px 0;
+}
+
+.styled-btn {
+  background: linear-gradient(135deg, #0f1f27, #132b34);
+  color: var(--text-main);
+  padding: 12px 28px;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  cursor: pointer;
+  box-shadow: 0 0 12px var(--shadow);
+  transition: var(--transition);
+}
+
+.styled-btn:hover {
+  background: linear-gradient(135deg, var(--accent), var(--accent-light));
+  color: #0a0a0a;
+  transform: scale(1.08);
+  box-shadow: 0 0 20px var(--accent);
+}
+
+.styled-btn:active {
+  transform: scale(0.95);
 }
 
 /* -------------------------
@@ -227,38 +210,6 @@ iframe {
 }
 
 @keyframes textGlow {
-  from { text-shadow: 0 0 5px var(--accent); }
-  to { text-shadow: 0 0 15px var(--accent-light); }
-}
-/* -------------------------
-   STYLED BUTTON
-------------------------- */
-.button-box {
-  text-align: center;
-  margin: 30px 0;
-}
-
-.styled-btn {
-  background: linear-gradient(135deg, #3d3d50, #4b4b63);
-  color: var(--text-main);
-  padding: 12px 28px;
-  border: none;
-  border-radius: 50px;
-  font-size: 1.1rem;
-  font-weight: bold;
-  letter-spacing: 1px;
-  cursor: pointer;
-  box-shadow: 0 4px 15px var(--shadow);
-  transition: var(--transition);
-}
-
-.styled-btn:hover {
-  background: linear-gradient(135deg, var(--accent), var(--accent-light));
-  color: #fff;
-  transform: scale(1.05);
-  box-shadow: 0 8px 20px var(--shadow);
-}
-
-.styled-btn:active {
-  transform: scale(0.98);
+  from { text-shadow: 0 0 6px var(--accent); }
+  to { text-shadow: 0 0 16px var(--accent-light); }
 }

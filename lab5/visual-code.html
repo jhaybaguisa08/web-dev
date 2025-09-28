@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Brisk & Brew Café</title>
+  <style>
+    /* ===== GLOBAL STYLES ===== */
+    body {
+      background: linear-gradient(135deg, #0f0f13, #1c1c22 70%);
+      color: #eaeaea;
+      font-family: "Segoe UI", Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      animation: fadeIn 0.8s ease-in-out;
+    }
+
+    /* ===== CONTAINER ===== */
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+      background: #1d1d27;
+      border-radius: 14px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+      animation: slideUp 0.8s ease-out;
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      text-align: center;
+      padding: 20px 10px;
+      background: #24242f;
+      border-radius: 14px 14px 0 0;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.4);
+      margin-bottom: 20px;
+    }
+
+    header h1 {
+      margin: 0;
+      color: #ffcc66;
+      text-shadow: 0 0 12px rgba(255, 204, 102, 0.7);
+      font-size: 2.2rem;
+    }
+
+    header p {
+      margin: 5px 0 15px;
+      font-size: 1rem;
+      color: #bcbcbc;
+    }
+
+    /* ===== NAV BAR ===== */
+    .nav-bar {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .nav-bar a {
+      text-decoration: none;
+      color: #f5f5f5;
+      background: #32323f;
+      padding: 0.6rem 1.2rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .nav-bar a:hover {
+      background: #454558;
+      transform: scale(1.07);
+    }
+
+    /* ===== SECTIONS ===== */
+    main section {
+      background: #24242f;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.5);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    main section:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+    }
+
+    h2 {
+      color: #ffcc66;
+      border-left: 4px solid #ffcc66;
+      padding-left: 10px;
+      margin-bottom: 12px;
+      text-shadow: 0 0 6px rgba(255, 204, 102, 0.6);
+    }
+
+    p {
+      line-height: 1.6;
+      color: #d0d0d0;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      background: #2e2e3c;
+      margin: 6px 0;
+      padding: 10px;
+      border-radius: 8px;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    li:hover {
+      background: #3a3a4a;
+      transform: scale(1.03);
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #9f9f9f;
+      padding: 15px 0;
+      border-top: 1px solid #333344;
+      margin-top: 10px;
+    }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Brisk & Brew Café</h1>
+      <p>Your daily dose of comfort.</p>
+      <nav class="nav-bar">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <section id="home">
+        <h2>Welcome to Our Café</h2>
+        <p>We serve freshly brewed coffee, breakfast, and pastries.</p>
+      </section>
+
+      <section id="about">
+        <h2>Why Choose Us</h2>
+        <ul>
+          <li>Locally roasted beans</li>
+          <li>Friendly baristas</li>
+          <li>Cozy environment</li>
+        </ul>
+      </section>
+
+      <section id="contact">
+        <h2>Contact</h2>
+        <p>Email: brisknbrew@gmail.com</p>
+        <p>Phone: (02) 8123 456</p>
+        <p>Address: 2293 pasigline street San Andres Bukid Manila, Manila, Philippines</p>
+      </section>
+    </main>
+
+    <footer>
+      <small>&copy; 2025 Brisk & Brew Café. All rights reserved.</small>
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Home | Brisk & Brew</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* DARKER THEME + GLOBAL STYLES */
+    body {
+      background: radial-gradient(circle at top, #0a0a0f, #050507);
+      color: #dcdcdc;
+      font-family: "Segoe UI", Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      animation: fadeIn 0.8s ease-in-out;
+    }
+
+    /* MAIN CONTAINER */
+    .container {
+      max-width: 950px;
+      margin: 50px auto;
+      padding: 35px;
+      background: #141418;
+      border-radius: 16px;
+      box-shadow: 0 6px 25px rgba(0,0,0,0.7);
+      animation: slideUp 0.8s ease-out;
+    }
+
+    /* HEADINGS */
+    h1, h2 {
+      color: #ffb347;
+      text-shadow: 0 0 10px rgba(255, 179, 71, 0.4);
+      margin-top: 0;
+    }
+
+    h1 {
+      font-size: 2.4rem;
+      text-align: center;
+      margin-bottom: 0.8rem;
+    }
+
+    h2 {
+      font-size: 1.6rem;
+      margin-top: 25px;
+      border-left: 4px solid #ffb347;
+      padding-left: 12px;
+    }
+
+    /* BODY TEXT */
+    p {
+      line-height: 1.6;
+      color: #c9c9c9;
+    }
+
+    /* MENU LIST */
+    .menu-list {
+      list-style: none;
+      padding-left: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 14px;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+
+    .menu-list li {
+      background: #1d1d23;
+      padding: 14px;
+      border-radius: 12px;
+      text-align: center;
+      font-size: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.5);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    }
+
+    .menu-list li:hover {
+      transform: scale(1.06);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+      background: #22222b;
+    }
+
+    .menu-icon {
+      font-size: 2rem;
+      margin-bottom: 8px;
+      color: #ffb347;
+      text-shadow: 0 0 6px rgba(255, 179, 71, 0.6);
+    }
+
+    /* DIVIDERS */
+    hr {
+      border: none;
+      border-top: 1px solid #2e2e35;
+      margin: 25px 0;
+    }
+
+    /* FOOTER */
+    .footer {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #888;
+      margin-top: 25px;
+      border-top: 1px solid #2e2e35;
+      padding-top: 12px;
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <h1>Brisk & Brew</h1>
+    <p>Enter our coffee shop, where each cup is made with the intention of making you smile.  Savor artisan baked goods, sample strong flavors, and get your morning off to a good start..</p>
+    <hr>
+
+    <h2>Our Story</h2>
+    <p>Brisk & Brew started off as a little corner café, founded by friends who shared a passion for coffee and community.  Today, with the same enthusiasm that began it all, we handcraft each pastry and roast small batches of excellent beans..</p>
+    <hr>
+
+    <h2>Our Menu Preview</h2>
+    <ul class="menu-list">
+      <li><span class="menu-icon">☕</span>Vanilla Cold Brew</li>
+      <li><span class="menu-icon">🥤</span>Hazelnut Cappuccino</li>
+      <li><span class="menu-icon">🍵</span>Matcha Latte</li>
+      <li><span class="menu-icon">🥐</span>Almond Croissant</li>
+      <li><span class="menu-icon">🥪</span>Turkey Pesto Panini</li>
+    </ul>
+    <hr>
+
+    <p class="footer">&copy; 2025 Brisk & Brew. All rights reserved.</p>
+  </main>
+</body>
+</html>
