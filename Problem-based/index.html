@@ -5,11 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Travel Blog</title>
   <style>
-    /* ===== GLOBAL ===== */
+    /* ===== GLOBAL DARK THEME ===== */
+    :root {
+      --bg-main: #0e0e12;
+      --card-bg: #1a1a1f;
+      --text-main: #e0e0e0;
+      --accent: #00e0ff;
+      --accent-glow: rgba(0, 224, 255, 0.8);
+    }
+
     body {
       font-family: 'Segoe UI', sans-serif;
-      background: #121216; /* darker background */
-      color: #e0e0e0;
+      background: var(--bg-main);
+      color: var(--text-main);
       text-align: center;
       padding: 20px;
       margin: 0;
@@ -17,23 +25,23 @@
     }
 
     h1 {
-      color: #ffcc66;
-      text-shadow: 0 0 12px rgba(255, 204, 102, 0.7);
+      color: var(--accent);
+      text-shadow: 0 0 15px var(--accent-glow);
       font-size: 2.5rem;
       margin-bottom: 10px;
     }
 
     h2 {
-      color: #ffcc66;
+      color: var(--accent);
       margin-top: 30px;
-      border-left: 4px solid #ffcc66;
+      border-left: 4px solid var(--accent);
       display: inline-block;
       padding-left: 10px;
-      text-shadow: 0 0 6px rgba(255, 204, 102, 0.6);
+      text-shadow: 0 0 8px var(--accent-glow);
     }
 
     p {
-      color: #cfcfcf;
+      color: #b3faff;
       max-width: 700px;
       margin: 0 auto 15px;
       line-height: 1.6;
@@ -42,7 +50,7 @@
     hr {
       border: none;
       height: 1px;
-      background: #2a2a2f; /* darker divider */
+      background: #1f1f26;
       margin: 25px auto;
       width: 80%;
     }
@@ -52,34 +60,41 @@
       list-style: none;
       padding: 0;
       margin: 20px auto;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
     }
 
     ul li {
-      margin: 10px auto;
-      padding: 12px;
-      max-width: 400px;
-      background: #1d1d22; /* darker list background */
+      margin: 0;
+    }
+
+    ul li a {
+      text-decoration: none;
+      color: var(--text-main);
+      background: var(--card-bg);
+      padding: 12px 20px;
       border-radius: 12px;
-      cursor: pointer;
-      transition: background 0.3s ease, transform 0.2s ease;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+      box-shadow: 0 0 10px rgba(0, 224, 255, 0.2);
+      transition: all 0.3s ease;
     }
 
-    ul li:hover {
-      background: #2a2a34;
-      transform: scale(1.05);
+    ul li a:hover {
+      color: #0a0a0f;
+      background: var(--accent);
+      box-shadow: 0 0 20px var(--accent-glow);
     }
 
-    /* ===== COFFEE DETAIL SECTION ===== */
+    /* ===== COFFEE DETAIL SECTION (unused but styled) ===== */
     .coffee-detail {
       display: none;
       margin: 25px auto;
       padding: 20px;
       max-width: 750px;
-      background: #1d1d22; /* darker detail section */
+      background: var(--card-bg);
       border-radius: 12px;
       text-align: left;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.6);
+      box-shadow: 0 0 15px rgba(0, 224, 255, 0.2);
       animation: fadeIn 0.6s ease;
     }
 
@@ -91,40 +106,33 @@
     }
 
     .coffee-detail h3 {
-      color: #ffcc66;
+      color: var(--accent);
       margin-top: 0;
+      text-shadow: 0 0 6px var(--accent-glow);
     }
 
     .coffee-detail p {
       line-height: 1.6;
-      color: #d8d8d8;
-    }
-
-    /* ===== NAV LINK ===== */
-    nav a {
-      display: inline-block;
-      text-decoration: none;
-      color: #f5f5f5;
-      background: #2a2a34;
-      padding: 10px 20px;
-      margin-top: 20px;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.5);
-      transition: background 0.3s ease, transform 0.2s ease;
-    }
-
-    nav a:hover {
-      background: #3a3a48;
-      transform: scale(1.05);
+      color: #b3faff;
     }
 
     /* ===== FOOTER ===== */
     footer {
       margin-top: 40px;
-      color: #9c9c9c;
+      color: #999999;
       font-size: 0.9rem;
-      border-top: 1px solid #2a2a2f;
+      border-top: 1px solid #1f1f26;
       padding-top: 15px;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    footer a:hover {
+      text-shadow: 0 0 10px var(--accent-glow);
     }
 
     /* ===== ANIMATIONS ===== */

@@ -6,8 +6,8 @@
   <style>
     /* PAGE BACKGROUND + TEXT */
     body {
-      background: linear-gradient(135deg, #0f0f13, #1c1c22 70%);
-      color: #e0e0e0;
+      background: radial-gradient(circle at top, #0a0a0f, #050507);
+      color: #cfdfff;
       font-family: "Segoe UI", Arial, sans-serif;
       margin: 0;
       padding: 0;
@@ -19,47 +19,51 @@
       max-width: 900px;
       margin: 40px auto;
       padding: 30px;
-      background: #1d1d27;
-      border-radius: 12px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+      background: #101218;
+      border-radius: 16px;
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
       animation: slideUp 0.8s ease-out;
     }
 
     /* HEADINGS */
     h2, h3 {  
-      color: #00d5ff;
-      text-shadow: 0 0 8px rgba(0, 213, 255, 0.5);
+      color: #00faff;
+      text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
       margin-top: 0;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 2rem;
     }
 
     /* SECTION STYLING */
     section {
       margin-top: 25px;
       padding: 20px;
-      background: #24242f;
-      border-left: 5px solid #00c4eb;
-      border-radius: 8px;
+      background: #161820;
+      border-left: 5px solid #00faff;
+      border-radius: 10px;
+      box-shadow: 0 0 12px rgba(0, 255, 255, 0.15);
       opacity: 0;
       transform: translateY(20px);
       animation: fadeSlideIn 0.7s ease-out forwards;
     }
 
-    section:nth-of-type(1) {
-      animation-delay: 0.3s;
-    }
-    section:nth-of-type(2) {
-      animation-delay: 0.6s;
-    }
+    section:nth-of-type(1) { animation-delay: 0.3s; }
+    section:nth-of-type(2) { animation-delay: 0.6s; }
 
     /* IFRAME STYLING */
     iframe {
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-      transition: transform 0.3s ease;
+      border-radius: 12px;
+      border: 2px solid #00faff;
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     iframe:hover {
       transform: scale(1.02);
+      box-shadow: 0 0 25px rgba(0, 255, 255, 0.6);
     }
 
     /* ANIMATIONS */
@@ -99,14 +103,14 @@
     </section>
 
     <section>
-  <h3>Sample Café Location (Philippines)</h3>
-  <p>Here’s a café in Manila, Philippines:</p>
-  <iframe 
-    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3859.9186801197326!2d121.00521347472028!3d14.577614185909994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397c9005b4f0b1b%3A0xb1dd12a005d3fd6c!2sBrisk%20N%E2%80%99%20Brew!5e0!3m2!1sen!2sph!4v1727456789012!5m2!1sen!2sph"
-    width="100%" height="400"
-    style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-  </iframe>
-</section>
+      <h3>Sample Café Location (Philippines)</h3>
+      <p>Here’s a café in Manila, Philippines:</p>
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3859.9186801197326!2d121.00521347472028!3d14.577614185909994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397c9005b4f0b1b%3A0xb1dd12a005d3fd6c!2sBrisk%20N%E2%80%99%20Brew!5e0!3m2!1sen!2sph!4v1727456789012!5m2!1sen!2sph"
+        width="100%" height="400"
+        style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </section>
   </main>
 </body>
 </html>

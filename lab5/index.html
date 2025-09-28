@@ -3,12 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <title>Home | Brisk & Brew</title>
-  <link rel="stylesheet" href="style.css">
   <style>
-    /* DARKER THEME + GLOBAL STYLES */
+    :root {
+      --bg-dark: #050507;
+      --panel: #111319;
+      --cyan: #00f1ff;
+      --glow: 0 0 10px rgba(0,241,255,0.9), 0 0 20px rgba(0,241,255,0.6);
+    }
+
+    /* GLOBAL */
     body {
-      background: radial-gradient(circle at top, #0a0a0f, #050507);
-      color: #dcdcdc;
+      background: radial-gradient(circle at top, #0b0d12, var(--bg-dark));
+      color: #dffcff;
       font-family: "Segoe UI", Arial, sans-serif;
       margin: 0;
       padding: 0;
@@ -20,16 +26,16 @@
       max-width: 950px;
       margin: 50px auto;
       padding: 35px;
-      background: #141418;
+      background: var(--panel);
       border-radius: 16px;
-      box-shadow: 0 6px 25px rgba(0,0,0,0.7);
+      box-shadow: 0 6px 25px rgba(0,0,0,0.7), var(--glow);
       animation: slideUp 0.8s ease-out;
     }
 
     /* HEADINGS */
     h1, h2 {
-      color: #ffb347;
-      text-shadow: 0 0 10px rgba(255, 179, 71, 0.4);
+      color: var(--cyan);
+      text-shadow: var(--glow);
       margin-top: 0;
     }
 
@@ -42,14 +48,14 @@
     h2 {
       font-size: 1.6rem;
       margin-top: 25px;
-      border-left: 4px solid #ffb347;
+      border-left: 4px solid var(--cyan);
       padding-left: 12px;
     }
 
     /* BODY TEXT */
     p {
       line-height: 1.6;
-      color: #c9c9c9;
+      color: #bcefff;
     }
 
     /* MENU LIST */
@@ -64,7 +70,7 @@
     }
 
     .menu-list li {
-      background: #1d1d23;
+      background: #0f1419;
       padding: 14px;
       border-radius: 12px;
       text-align: center;
@@ -72,27 +78,28 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.5);
+      border: 1px solid rgba(0,241,255,0.3);
+      box-shadow: 0 3px 12px rgba(0,0,0,0.6);
       transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
     }
 
     .menu-list li:hover {
       transform: scale(1.06);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.6);
-      background: #22222b;
+      box-shadow: var(--glow);
+      background: #121a20;
     }
 
     .menu-icon {
       font-size: 2rem;
       margin-bottom: 8px;
-      color: #ffb347;
-      text-shadow: 0 0 6px rgba(255, 179, 71, 0.6);
+      color: var(--cyan);
+      text-shadow: var(--glow);
     }
 
     /* DIVIDERS */
     hr {
       border: none;
-      border-top: 1px solid #2e2e35;
+      border-top: 1px solid rgba(0,241,255,0.3);
       margin: 25px 0;
     }
 
@@ -100,9 +107,9 @@
     .footer {
       text-align: center;
       font-size: 0.9rem;
-      color: #888;
+      color: #7ddfff;
       margin-top: 25px;
-      border-top: 1px solid #2e2e35;
+      border-top: 1px solid rgba(0,241,255,0.2);
       padding-top: 12px;
     }
 
@@ -121,11 +128,11 @@
 <body>
   <main class="container">
     <h1>Brisk & Brew</h1>
-    <p>Enter our coffee shop, where each cup is made with the intention of making you smile.  Savor artisan baked goods, sample strong flavors, and get your morning off to a good start..</p>
+    <p>Enter our coffee shop, where each cup is made with the intention of making you smile. Savor artisan baked goods, sample strong flavors, and get your morning off to a good start.</p>
     <hr>
 
     <h2>Our Story</h2>
-    <p>Brisk & Brew started off as a little corner café, founded by friends who shared a passion for coffee and community.  Today, with the same enthusiasm that began it all, we handcraft each pastry and roast small batches of excellent beans..</p>
+    <p>Brisk & Brew started off as a little corner café, founded by friends who shared a passion for coffee and community. Today, with the same enthusiasm that began it all, we handcraft each pastry and roast small batches of excellent beans.</p>
     <hr>
 
     <h2>Our Menu Preview</h2>

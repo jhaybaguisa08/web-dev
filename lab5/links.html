@@ -3,12 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <title>Working with Hyperlinks</title>
-  <link rel="stylesheet" href="style.css">
   <style>
+    :root {
+      --bg-dark: #050507;
+      --panel: #111319;
+      --cyan: #00f1ff;
+      --glow: 0 0 8px rgba(0,241,255,0.9), 0 0 18px rgba(0,241,255,0.6);
+    }
+
     /* PAGE BACKGROUND + TEXT */
     body {
-      background: radial-gradient(circle at top, #0a0a0f, #050507);
-      color: #e0e0e0;
+      background: radial-gradient(circle at top, #0b0d12, var(--bg-dark));
+      color: #dffcff;
       font-family: "Segoe UI", Arial, sans-serif;
       margin: 0;
       padding: 0;
@@ -20,44 +26,48 @@
       max-width: 800px;
       margin: 50px auto;
       padding: 30px;
-      background: #121216;
+      background: var(--panel);
       border-radius: 14px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.7), var(--glow);
       animation: slideUp 0.8s ease-out;
     }
 
     /* HEADINGS */
     h2, h3 {
-      color: #00e0ff;
-      text-shadow: 0 0 10px rgba(0, 224, 255, 0.5);
+      color: var(--cyan);
+      text-shadow: var(--glow);
     }
 
     /* BUTTON LINKS */
     .btn {
       display: inline-block;
       padding: 12px 20px;
-      margin: 10px 0;
-      background: linear-gradient(135deg, #00d4ff, #00aaff);
-      color: white;
+      margin: 10px 8px 10px 0;
+      background: rgba(0,241,255,0.08);
+      border: 1px solid rgba(0,241,255,0.4);
+      color: var(--cyan);
       text-decoration: none;
       border-radius: 10px;
       font-weight: bold;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+      transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
     }
 
     .btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 18px rgba(0,0,0,0.6);
+      transform: translateY(-3px) scale(1.05);
+      background: rgba(0,241,255,0.15);
+      box-shadow: var(--glow);
+      color: #fff;
     }
 
     /* SECTION STYLING */
     #section1 {
       margin-top: 25px;
       padding: 22px;
-      background: #18181f;
-      border-left: 5px solid #00d0ff;
+      background: #0d1116;
+      border-left: 5px solid var(--cyan);
       border-radius: 10px;
+      box-shadow: inset 0 0 10px rgba(0,241,255,0.2);
       opacity: 0;
       transform: translateY(20px);
       animation: fadeSlideIn 0.7s ease-out forwards;
@@ -92,13 +102,13 @@
   <main class="container">
     <h2>Working with Hyperlinks</h2>
 
-    <a class="btn" href="#section1">Go to Section 1</a><br>
-    <a class="btn" href="https://github.com/jhaybaguisa08" target="_blank">My GitHub Profile</a><br>
-    <a class="btn" href="index.html">Go to Mini Cafe Site</a><br>
+    <a class="btn" href="#section1">Go to Section 1</a>
+    <a class="btn" href="https://github.com/jhaybaguisa08" target="_blank">My GitHub Profile</a>
+    <a class="btn" href="index.html">Go to Mini Cafe Site</a>
 
     <section id="section1">
       <h3>Section 1</h3>
-      <p>This section is styled with a deeper dark background and neon cyan border highlight.</p>
+      <p>This section uses a deeper dark background and neon cyan border highlight for emphasis.</p>
     </section>
   </main>
 </body>

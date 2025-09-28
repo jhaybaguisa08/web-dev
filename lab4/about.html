@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <title>About Me</title>
-  <link rel="stylesheet" href="../style.css"> <!-- Link to main site CSS -->
   <style>
     /* DARK THEME VARIABLES */
     :root {
       --card-bg: #121216;
       --text-main: #e0e0e0;
       --accent: #00e0ff;
+      --accent-light: #33ebff;
       --accent-dark: #007a88;
-      --shadow: rgba(0, 0, 0, 0.6);
+      --shadow: rgba(0, 224, 255, 0.25);
     }
 
     body {
@@ -28,11 +28,32 @@
       margin: 60px auto;
       background: var(--card-bg);
       color: var(--text-main);
-      padding: 35px;
-      border-radius: 16px;
-      box-shadow: 0 6px 20px var(--shadow);
+      padding: 40px;
+      border-radius: 18px;
+      box-shadow: 0 0 25px var(--shadow);
       animation: fadeIn 0.8s ease-in-out;
       text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Neon border glow */
+    .about-container::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 18px;
+      padding: 2px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-light));
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      animation: glow 3s linear infinite;
+    }
+
+    @keyframes glow {
+      0% { filter: hue-rotate(0deg); }
+      100% { filter: hue-rotate(360deg); }
     }
 
     /* Profile Image */
@@ -43,7 +64,7 @@
       object-fit: cover;
       border: 4px solid var(--accent);
       margin-bottom: 18px;
-      box-shadow: 0 4px 12px var(--shadow);
+      box-shadow: 0 0 15px var(--accent-light);
       opacity: 0;
       animation: profileFade 1s ease forwards;
       animation-delay: 0.3s;
@@ -51,14 +72,15 @@
     }
 
     .profile-pic:hover {
-      transform: scale(1.07);
+      transform: scale(1.08);
+      box-shadow: 0 0 25px var(--accent-light);
     }
 
     /* Title */
     .about-container h1 {
       font-size: 2rem;
       color: var(--accent);
-      text-shadow: 0 0 10px rgba(0, 224, 255, 0.5);
+      text-shadow: 0 0 12px var(--accent-light);
       margin-bottom: 15px;
     }
 
@@ -74,26 +96,28 @@
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 14px;
       margin-bottom: 25px;
       padding: 0;
     }
 
     .hobbies li {
       list-style: none;
-      background: var(--accent-dark);
-      color: white;
-      padding: 9px 18px;
+      background: rgba(0, 224, 255, 0.1);
+      color: var(--accent);
+      padding: 10px 20px;
       border-radius: 50px;
       font-size: 1rem;
-      box-shadow: 0 3px 8px var(--shadow);
+      border: 1px solid var(--accent);
+      box-shadow: 0 0 12px rgba(0, 224, 255, 0.3);
       transition: all 0.3s ease;
     }
 
     .hobbies li:hover {
       background: var(--accent);
-      transform: translateY(-3px);
-      box-shadow: 0 5px 12px rgba(0, 224, 255, 0.4);
+      color: #0a0a0f;
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 0 18px var(--accent-light);
     }
 
     /* Animations */

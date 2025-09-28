@@ -4,10 +4,18 @@
   <meta charset="UTF-8">
   <title>Brisk & Brew Café</title>
   <style>
+    :root {
+      --bg: #0d0f11;
+      --panel: #151a1f;
+      --cyan: #00f1ff;
+      --muted: #b3cbd1;
+      --glow: 0 0 8px rgba(0, 241, 255, 0.8), 0 0 20px rgba(0, 241, 255, 0.5);
+    }
+
     /* ===== GLOBAL STYLES ===== */
     body {
-      background: linear-gradient(135deg, #0f0f13, #1c1c22 70%);
-      color: #eaeaea;
+      background: linear-gradient(135deg, #0b0d10, #14181c 70%);
+      color: #eafcff;
       font-family: "Segoe UI", Arial, sans-serif;
       margin: 0;
       padding: 0;
@@ -19,33 +27,33 @@
       max-width: 900px;
       margin: 40px auto;
       padding: 0 20px;
-      background: #1d1d27;
+      background: var(--panel);
       border-radius: 14px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.6), var(--glow);
       animation: slideUp 0.8s ease-out;
     }
 
     /* ===== HEADER ===== */
     header {
       text-align: center;
-      padding: 20px 10px;
-      background: #24242f;
+      padding: 25px 10px;
+      background: #0f1418;
       border-radius: 14px 14px 0 0;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.4);
+      box-shadow: inset 0 0 20px rgba(0,241,255,0.1);
       margin-bottom: 20px;
     }
 
     header h1 {
       margin: 0;
-      color: #ffcc66;
-      text-shadow: 0 0 12px rgba(255, 204, 102, 0.7);
-      font-size: 2.2rem;
+      color: var(--cyan);
+      text-shadow: var(--glow);
+      font-size: 2.4rem;
     }
 
     header p {
-      margin: 5px 0 15px;
+      margin: 6px 0 15px;
       font-size: 1rem;
-      color: #bcbcbc;
+      color: var(--muted);
     }
 
     /* ===== NAV BAR ===== */
@@ -57,45 +65,48 @@
 
     .nav-bar a {
       text-decoration: none;
-      color: #f5f5f5;
-      background: #32323f;
+      color: var(--cyan);
+      background: #11161a;
       padding: 0.6rem 1.2rem;
       border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.4);
-      transition: background 0.3s ease, transform 0.2s ease;
+      border: 1px solid rgba(0,241,255,0.3);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.6);
+      transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s;
     }
 
     .nav-bar a:hover {
-      background: #454558;
-      transform: scale(1.07);
+      background: rgba(0,241,255,0.1);
+      transform: scale(1.08);
+      box-shadow: var(--glow);
     }
 
     /* ===== SECTIONS ===== */
     main section {
-      background: #24242f;
-      padding: 20px;
+      background: #0f1418;
+      padding: 22px;
       margin-bottom: 20px;
       border-radius: 12px;
-      box-shadow: 0 0 12px rgba(0,0,0,0.5);
+      border: 1px solid rgba(0,241,255,0.2);
+      box-shadow: inset 0 0 15px rgba(0,241,255,0.05);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     main section:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+      transform: translateY(-4px);
+      box-shadow: var(--glow);
     }
 
     h2 {
-      color: #ffcc66;
-      border-left: 4px solid #ffcc66;
+      color: var(--cyan);
+      border-left: 4px solid var(--cyan);
       padding-left: 10px;
-      margin-bottom: 12px;
-      text-shadow: 0 0 6px rgba(255, 204, 102, 0.6);
+      margin-bottom: 14px;
+      text-shadow: var(--glow);
     }
 
     p {
       line-height: 1.6;
-      color: #d0d0d0;
+      color: #d6faff;
     }
 
     ul {
@@ -104,25 +115,27 @@
     }
 
     li {
-      background: #2e2e3c;
-      margin: 6px 0;
-      padding: 10px;
+      background: #11161a;
+      margin: 8px 0;
+      padding: 12px;
       border-radius: 8px;
-      transition: background 0.3s ease, transform 0.2s ease;
+      border: 1px solid rgba(0,241,255,0.2);
+      transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s;
     }
 
     li:hover {
-      background: #3a3a4a;
+      background: rgba(0,241,255,0.08);
       transform: scale(1.03);
+      box-shadow: var(--glow);
     }
 
     /* ===== FOOTER ===== */
     footer {
       text-align: center;
       font-size: 0.9rem;
-      color: #9f9f9f;
+      color: var(--muted);
       padding: 15px 0;
-      border-top: 1px solid #333344;
+      border-top: 1px solid rgba(0,241,255,0.2);
       margin-top: 10px;
     }
 
@@ -141,7 +154,7 @@
 <body>
   <div class="container">
     <header>
-      <h1>Brisk & Brew Café</h1>
+      <h1>Brisk &amp; Brew Café</h1>
       <p>Your daily dose of comfort.</p>
       <nav class="nav-bar">
         <a href="#home">Home</a>
@@ -161,7 +174,7 @@
         <ul>
           <li>Locally roasted beans</li>
           <li>Friendly baristas</li>
-          <li>Cozy environment</li>
+          <li>Cozy neon-lit environment</li>
         </ul>
       </section>
 
@@ -169,12 +182,12 @@
         <h2>Contact</h2>
         <p>Email: brisknbrew@gmail.com</p>
         <p>Phone: (02) 8123 456</p>
-        <p>Address: 2293 pasigline street San Andres Bukid Manila, Manila, Philippines</p>
+        <p>Address: 2293 Pasigline Street, San Andres Bukid, Manila, Philippines</p>
       </section>
     </main>
 
     <footer>
-      <small>&copy; 2025 Brisk & Brew Café. All rights reserved.</small>
+      <small>&copy; 2025 Brisk &amp; Brew Café. All rights reserved.</small>
     </footer>
   </div>
 </body>

@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Profile - John Joven C. Baguisa</title>
+  <style>
+    :root{
+      --bg:#07070a;
+      --panel:#0f1114;
+      --muted:#9aa3ad;
+      --cyan:#00f1ff;
+      --glass: rgba(255,255,255,0.03);
+      --soft-shadow: 0 6px 18px rgba(0,0,0,0.6);
+      --glow: 0 0 18px rgba(0,241,255,0.12), 0 0 6px rgba(0,241,255,0.08);
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: 'Segoe UI',sans-serif;
+      background: var(--bg);
+      color:#e6f7fb;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      min-height:100vh;
+      padding:20px;
+    }
+
+    .card{
+      background: var(--panel);
+      border-radius:16px;
+      padding:32px;
+      max-width:480px;
+      width:100%;
+      box-shadow: var(--soft-shadow), var(--glow);
+      border: 1px solid rgba(0,241,255,0.06);
+      text-align:center;
+    }
+
+    .avatar{
+      width:80px;height:80px;
+      border-radius:50%;
+      background:linear-gradient(135deg,var(--cyan), rgba(0,241,255,0.2));
+      display:flex;align-items:center;justify-content:center;
+      font-size:28px;font-weight:700;color:#021018;
+      margin:0 auto 20px auto;
+      box-shadow:inset 0 -6px 12px rgba(255,255,255,0.03), 0 6px 18px rgba(0,241,255,0.2);
+    }
+
+    h1{margin:0 0 12px 0;font-size:22px;color:var(--cyan)}
+    p{margin:6px 0;color:var(--muted)}
+    .highlight{color:var(--cyan);font-weight:600}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="avatar">JJ</div>
+    <h1>John Joven C. Baguisa</h1>
+    <p><span class="highlight">College:</span> Industrial Education</p>
+    <p><span class="highlight">Course:</span> BSIE - ICT - 3A</p>
+    <p><span class="highlight">Age:</span> 20 years old</p>
+  </div>
+</body>
+</html>
