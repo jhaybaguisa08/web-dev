@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Tech News Digest — Explainers for Beginners</title>
+  <meta name="description" content="A mini project: tech news digest with simple explainers, dark neon cyan theme. Good for beginners and small demos." />
+  <style>
+
+    :root{
+      --bg:#061018;      /* very dark blue-black */
+      --card: rgba(255,255,255,0.03);
+      --muted: #94a3b8;   /* soft gray */
+      --neon: #00f0da;    /* neon cyan */
+      --glow: 0 8px 30px rgba(0,240,218,0.08), 0 0 6px rgba(0,240,218,0.06) inset;
+      --glass-border: 1px solid rgba(255,255,255,0.04);
+      --radius: 14px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background: radial-gradient(1200px 800px at 10% 10%, rgba(0,240,218,0.03), transparent),
+                  radial-gradient(900px 600px at 90% 90%, rgba(29,124,242,0.02), transparent),
+                  var(--bg);
+      color:#dff7f3;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:28px;
+      display:flex;
+      justify-content:center;
+      align-items:flex-start;
+      gap:20px;
+      min-height:100vh;
+    }
+
+    .container{
+      width:100%;
+      max-width:1100px;
+      display:grid;
+      grid-template-columns: 320px 1fr;
+      gap:24px;
+    }
+
+    /* Sidebar */
+    .sidebar{
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:var(--radius);
+      padding:18px;
+      box-shadow:var(--glow);
+      border:var(--glass-border);
+      height:fit-content;
+      position:sticky;
+      top:28px;
+    }
+    .brand{
+      display:flex;align-items:center;gap:12px;margin-bottom:14px
+    }
+    .logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--neon),#1d7cf2);box-shadow:0 6px 18px rgba(0,240,218,0.14);display:flex;align-items:center;justify-content:center;font-weight:700;color:#012;}
+    h1{font-size:16px;margin:0}
+    p.lead{margin:6px 0 12px;color:var(--muted);font-size:13px}
+
+    .search{
+      display:flex;gap:8px;margin-bottom:12px
+    }
+    .search input{flex:1;padding:10px 12px;border-radius:10px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:inherit;outline:none}
+    .search button{padding:10px 12px;border-radius:10px;border:1px solid rgba(255,255,255,0.03);background:linear-gradient(90deg, rgba(0,240,218,0.06), transparent);cursor:pointer}
+
+    .filters{display:flex;flex-direction:column;gap:8px}
+    .chip{display:inline-flex;align-items:center;gap:8px;padding:8px 10px;border-radius:999px;border:1px solid rgba(255,255,255,0.02);background:rgba(0,0,0,0.14);cursor:pointer;font-size:13px}
+
+    /* Main content */
+    .main{
+      display:flex;flex-direction:column;gap:16px
+    }
+    .controls{display:flex;justify-content:space-between;align-items:center;gap:12px}
+    .controls .left{display:flex;gap:12px;align-items:center}
+    .btn{padding:10px 14px;border-radius:12px;border:1px solid rgba(255,255,255,0.04);background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));cursor:pointer}
+    .btn.primary{background:linear-gradient(90deg,var(--neon),#1d7cf2);color:#012;border:none;box-shadow:0 10px 30px rgba(0,240,218,0.08)}
+
+    .card{background:var(--card);border-radius:14px;padding:16px;border:var(--glass-border);box-shadow:var(--glow)}
+    .article{display:grid;grid-template-columns:1fr 160px;gap:16px;align-items:start}
+    .meta{font-size:12px;color:var(--muted);display:flex;gap:10px;flex-wrap:wrap}
+    .badge{padding:6px 8px;border-radius:8px;background:linear-gradient(90deg, rgba(0,240,218,0.06), rgba(29,124,242,0.03));font-size:12px}
+    .thumb{width:100%;height:110px;border-radius:10px;background:linear-gradient(135deg, rgba(0,240,218,0.06), rgba(29,124,242,0.03));display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--muted)}
+
+    .summary{color:var(--muted);font-size:14px}
+    .explain{margin-top:12px;background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);padding:12px;border-radius:10px;color:#eafffb}
+    .explain small{display:block;color:var(--muted);margin-bottom:8px}
+    details{background:transparent;border-radius:8px;padding:6px}
+    details summary{list-style:none;cursor:pointer;outline:none}
+
+    .readtime{font-size:12px;color:var(--muted)}
+
+    /* Responsive */
+    @media (max-width:880px){
+      .container{grid-template-columns:1fr;}
+      .article{grid-template-columns:1fr}
+      .sidebar{position:relative;top:0}
+    }
+
+    /* small neat focus styles */
+    a,button,input{transition:all 160ms ease}
+    button:focus,input:focus,summary:focus{box-shadow:0 0 0 4px rgba(0,240,218,0.08);outline:none}
+    .muted-note{color:var(--muted);font-size:13px}
+
+    /* tiny footer */
+    footer{opacity:0.7;font-size:12px;color:var(--muted);text-align:center;margin-top:8px}
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <aside class="sidebar card" aria-label="controls and filters">
+      <div class="brand">
+        <div class="logo">TN</div>
+        <div>
+          <h1>Tech News Digest</h1>
+          <p class="lead">Quick explainers for beginners — read in minutes, understand for hours.</p>
+        </div>
+      </div>
+
+      <div class="search" role="search">
+        <input id="q" placeholder="Search topic (e.g. AI, 5G, crypto)" aria-label="Search news" />
+        <button id="clear" title="Clear">✕</button>
+      </div>
+
+      <div class="filters">
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <button class="chip" data-filter="all">All</button>
+          <button class="chip" data-filter="ai">AI</button>
+          <button class="chip" data-filter="security">Security</button>
+          <button class="chip" data-filter="web">Web</button>
+          <button class="chip" data-filter="mobile">Mobile</button>
+        </div>
+
+        <div style="margin-top:12px">
+          <div class="muted-note">Reading level</div>
+          <div style="display:flex;gap:8px;margin-top:8px">
+            <button class="chip" data-level="easy">Explain like I'm 10</button>
+            <button class="chip" data-level="medium">Teen / Beginner</button>
+          </div>
+        </div>
+
+        <div style="margin-top:14px;display:flex;flex-direction:column;gap:8px">
+          <div class="muted-note">Quick actions</div>
+          <button class="btn" id="random">Show a random explainer</button>
+          <button class="btn" id="print">Print view</button>
+        </div>
+
+        <footer>Made for learning </footer>
+      </div>
+    </aside>
+
+    <main class="main">
+
+      <div class="controls card">
+        <div class="left">
+          <div class="muted-note">Showing <strong id="count">5</strong> explainers</div>
+        </div>
+        <div>
+          <button class="btn" id="refresh">Refresh</button>
+          <button class="btn primary" id="subscribe">Subscribe</button>
+        </div>
+      </div>
+
+      <!-- Articles list -->
+      <section id="list" class="card" aria-live="polite">
+
+        <!-- Individual article template (cloned by JS) -->
+
+        <!-- Example articles baked-in so the project works offline -->
+        <article class="article" data-tags="ai,web" data-level="easy">
+          <div>
+            <h2 style="margin:0 0 6px">What is generative AI? — (Explain like I’m 10)</h2>
+            <div class="meta">
+              <span class="badge">AI</span>
+              <span class="readtime">5 min read</span>
+              <span class="muted-note">Oct 2025</span>
+            </div>
+            <p class="summary">Generative AI is a type of computer program that can make new things — like pictures, stories, or music — after learning from lots of examples.</p>
+
+            <div class="explain">
+              <small>Simple explanation</small>
+              <strong>Think of it like a robot artist and storyteller:</strong>
+              <p>We show the AI many drawings and stories. The AI learns patterns and then uses those patterns to create brand new pictures or text when we ask. It doesn't 'think' like a person, it uses math to copy the style of what it learned.</p>
+
+              <details>
+                <summary>Why people care about it</summary>
+                <p>It can help artists finish ideas, help programmers write code faster, and make games more fun. But it can also make fake pictures or text, so people are careful how they use it.</p>
+              </details>
+            </div>
+          </div>
+          <div class="thumb">AI</div>
+        </article>
+
+        <article class="article" data-tags="security" data-level="easy">
+          <div>
+            <h2 style="margin:0 0 6px">How do passwords get stolen? — (Very simple)</h2>
+            <div class="meta">
+              <span class="badge">Security</span>
+              <span class="readtime">3 min read</span>
+              <span class="muted-note">Sep 2025</span>
+            </div>
+            <p class="summary">Passwords can be stolen when people trick you, when websites leak data, or when there are mistakes in software.</p>
+
+            <div class="explain">
+              <small>Simple explanation</small>
+              <strong>Like leaving a key under the mat:</strong>
+              <p>If you reuse the same password everywhere and a website loses its list of passwords, bad people can try that same password on other sites. Phishing is when someone pretends to be your bank to trick you into typing your password on a fake page.</p>
+
+              <details>
+                <summary>How to protect yourself</summary>
+                <p>Use a password manager, turn on two-factor authentication, and don't click links in messages you don't expect.</p>
+              </details>
+            </div>
+          </div>
+          <div class="thumb">🔒</div>
+        </article>
+
+        <article class="article" data-tags="web" data-level="medium">
+          <div>
+            <h2 style="margin:0 0 6px">What is a web framework? — (Beginner friendly)</h2>
+            <div class="meta">
+              <span class="badge">Web</span>
+              <span class="readtime">4 min read</span>
+              <span class="muted-note">Aug 2025</span>
+            </div>
+            <p class="summary">A web framework is like a toolbox that helps developers build websites faster by providing common parts already made.</p>
+
+            <div class="explain">
+              <small>Simple explanation</small>
+              <strong>Imagine building a Lego city:</strong>
+              <p>Instead of carving each Lego brick, a framework gives you ready-made pieces (like login pages, pages router, templates). Examples are React, Django, and Laravel.</p>
+
+              <details>
+                <summary>Why use one?</summary>
+                <p>They save time, reduce bugs, and help teams work together because there are shared rules and structure.</p>
+              </details>
+            </div>
+          </div>
+          <div class="thumb">Web</div>
+        </article>
+
+        <article class="article" data-tags="mobile" data-level="easy">
+          <div>
+            <h2 style="margin:0 0 6px">What is 5G and will it make my phone faster?</h2>
+            <div class="meta">
+              <span class="badge">Mobile</span>
+              <span class="readtime">3 min read</span>
+              <span class="muted-note">Jul 2025</span>
+            </div>
+            <p class="summary">5G is the newest generation of mobile internet. It can be a lot faster, but it depends on where you are and your phone.</p>
+
+            <div class="explain">
+              <small>Simple explanation</small>
+              <strong>Like upgrading from a small road to a highway:</strong>
+              <p>5G can let more devices use more data at the same time and can reduce delays. But if you're far from a 5G tower or have an old phone, you might not feel the difference.</p>
+
+              <details>
+                <summary>Real-world limits</summary>
+                <p>Coverage, battery use, and whether apps actually need that much speed matter. Some 5G is built for long range, some for very high speeds in small areas.</p>
+              </details>
+            </div>
+          </div>
+          <div class="thumb">📶</div>
+        </article>
+
+        <article class="article" data-tags="ai,security" data-level="medium">
+          <div>
+            <h2 style="margin:0 0 6px">Deepfakes — what they are and why they matter</h2>
+            <div class="meta">
+              <span class="badge">AI</span>
+              <span class="badge">Security</span>
+              <span class="readtime">6 min read</span>
+              <span class="muted-note">Oct 2025</span>
+            </div>
+            <p class="summary">Deepfakes are AI-made fake videos or audio that look or sound real. They're improving fast, so people worry about misuse.</p>
+
+            <div class="explain">
+              <small>Simple explanation</small>
+              <strong>Like a really good impersonator</strong>
+              <p>Deepfake tools can swap faces, change voices, or put words into someone's mouth. That can be harmless (fun filters) or harmful (fake news, scams).</p>
+
+              <details>
+                <summary>What to watch for</summary>
+                <p>Check multiple sources for surprising videos, look for inconsistent lighting or lip-sync, and rely on trusted news for important claims.</p>
+              </details>
+            </div>
+          </div>
+          <div class="thumb">🎭</div>
+        </article>
+
+      </section>
+
+      <div class="card" style="display:flex;justify-content:space-between;align-items:center">
+        <div>
+          <strong>Tip:</strong> Click an explainer to expand details. Use the search to find topics.
+        </div>
+        <div class="muted-note">Built with plain HTML/CSS/JS — great for learning</div>
+      </div>
+
+    </main>
+  </div>
+
+  <script>
+    // Simple interactivity: search, filter, random, print
+    const q = document.getElementById('q');
+    const clear = document.getElementById('clear');
+    const list = document.getElementById('list');
+    const chips = [...document.querySelectorAll('.chip')];
+    const levelChips = [...document.querySelectorAll('[data-level]')];
+    const countEl = document.getElementById('count');
+    const randomBtn = document.getElementById('random');
+    const printBtn = document.getElementById('print');
+    const refresh = document.getElementById('refresh');
+
+    function getArticles(){
+      return [...list.querySelectorAll('article')];
+    }
+
+    function showCount(n){countEl.textContent = n}
+
+    function filterArticles(){
+      const query = q.value.trim().toLowerCase();
+      const activeFilter = chips.find(c=>c.classList.contains('active'))?.dataset.filter || 'all';
+      const activeLevel = levelChips.find(c=>c.classList.contains('active'))?.dataset.level || null;
+
+      const articles = getArticles();
+      let shown = 0;
+      articles.forEach(a=>{
+        const title = (a.querySelector('h2')?.textContent||'').toLowerCase();
+        const summary = (a.querySelector('.summary')?.textContent||'').toLowerCase();
+        const tags = (a.dataset.tags||'').toLowerCase();
+        const level = (a.dataset.level||'').toLowerCase();
+
+        let matchesQuery = !query || title.includes(query) || summary.includes(query) || tags.includes(query);
+        let matchesFilter = activeFilter === 'all' || tags.split(',').includes(activeFilter);
+        let matchesLevel = !activeLevel || level === activeLevel;
+
+        if(matchesQuery && matchesFilter && matchesLevel){
+          a.style.display = '';
+          shown++;
+        } else {
+          a.style.display = 'none';
+        }
+      });
+      showCount(shown);
+    }
+
+    // initialize: set "All" active
+    document.querySelector('.chip[data-filter="all"]').classList.add('active');
+    document.querySelector('.chip[data-level="easy"]').classList.add('active');
+
+    // chip behavior
+    chips.forEach(c=>c.addEventListener('click', ()=>{
+      chips.forEach(x=>x.classList.remove('active'));
+      c.classList.add('active');
+      filterArticles();
+    }));
+    levelChips.forEach(c=>c.addEventListener('click', ()=>{
+      levelChips.forEach(x=>x.classList.remove('active'));
+      c.classList.add('active');
+      filterArticles();
+    }));
+
+    q.addEventListener('input', filterArticles);
+    clear.addEventListener('click', ()=>{q.value='';filterArticles();});
+    refresh.addEventListener('click', ()=>{filterArticles();});
+
+    randomBtn.addEventListener('click', ()=>{
+      const visible = getArticles().filter(a=>a.style.display!=='none');
+      if(visible.length===0){alert('No explainers match your filters. Try clearing the search.');return}
+      const pick = visible[Math.floor(Math.random()*visible.length)];
+      window.scrollTo({top: pick.offsetTop - 80, behavior:'smooth'});
+      // briefly highlight
+      pick.animate([{boxShadow:'0 0 0px rgba(0,240,218,0)'},{boxShadow:'0 0 40px rgba(0,240,218,0.14)'}],{duration:900,fill:'forwards'});
+    });
+
+    printBtn.addEventListener('click', ()=>{
+      window.print();
+    });
+
+    // basic keyboard accessibility: press / to focus search
+    window.addEventListener('keydown', (e)=>{ if(e.key === '/' && document.activeElement.tagName !== 'INPUT'){ e.preventDefault(); q.focus(); }});
+
+    // enhance details: close all other details when one opens
+    document.querySelectorAll('details').forEach(d=>{
+      d.addEventListener('toggle', (ev)=>{
+        if(d.open){
+          document.querySelectorAll('details').forEach(x=>{ if(x!==d) x.open=false });
+        }
+      })
+    });
+
+    // initial filter
+    filterArticles();
+
+    // small helper for future extension: addArticle
+    function addArticle({title,tags,level,summary,explain,readtime='3 min',date='Dec 2025',thumb='✦'}){
+      const art = document.createElement('article');
+      art.className='article';
+      art.dataset.tags = tags.join(',');
+      art.dataset.level = level;
+      art.innerHTML = `
+        <div>
+          <h2 style="margin:0 0 6px">${title}</h2>
+          <div class="meta"><span class="badge">${tags[0]}</span><span class="readtime">${readtime}</span><span class="muted-note">${date}</span></div>
+          <p class="summary">${summary}</p>
+          <div class="explain"><small>Simple explanation</small><strong></strong><p>${explain}</p><details><summary>More</summary><p>Learn more on the web.</p></details></div>
+        </div>
+        <div class="thumb">${thumb}</div>
+      `;
+      list.appendChild(art);
+      filterArticles();
+    }
+
+    // Example: uncomment to test dynamic add
+    // addArticle({title:'What is the Metaverse?',tags:['web'],level:'medium',summary:'Short summary',explain:'Longer explanation...'});
+
+  </script>
+</body>
+</html>
