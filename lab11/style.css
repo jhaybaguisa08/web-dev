@@ -1,0 +1,129 @@
+/* -------------------------
+   GLOBAL VARIABLES
+------------------------- */
+:root {
+  --bg-main: radial-gradient(circle at top left, #050710, #00040c);
+  --bg-secondary: #0a0f1f;
+
+  --accent: #00ffff;
+  --accent-light: #66ffff;
+
+  --text-main: #e8fdff;
+  --text-muted: #7fdfff;
+
+  --border: rgba(0, 255, 255, 0.25);
+  --shadow: rgba(0, 255, 255, 0.25);
+  --glow: 0 0 12px rgba(0, 255, 255, 0.7);
+
+  --radius: 12px;
+  --transition: all 0.3s ease-in-out;
+}
+
+/* -------------------------
+   GLOBAL STYLES
+------------------------- */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--bg-main);
+  color: var(--text-main);
+  text-align: center;
+  margin: 0;
+  padding: 40px 20px;
+  min-height: 100vh;
+}
+
+/* -------------------------
+   HEADINGS
+------------------------- */
+h1, h2, h3 {
+  color: var(--accent);
+  text-shadow: 0 0 8px var(--accent), 0 0 16px rgba(0,255,255,0.6);
+}
+
+/* -------------------------
+   BUTTONS
+------------------------- */
+button {
+  background: transparent;
+  color: var(--accent);
+  padding: 10px 22px;
+  border: 1px solid var(--border);
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: var(--transition);
+  box-shadow: inset 0 0 6px rgba(0,255,255,0.3);
+}
+
+button:hover {
+  background: var(--accent);
+  color: #000;
+  transform: scale(1.08);
+  box-shadow: var(--glow);
+}
+
+/* -------------------------
+   INPUTS
+------------------------- */
+input {
+  background: #050b17;
+  color: var(--text-main);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px;
+  margin: 5px;
+  width: 150px;
+  text-align: center;
+  transition: var(--transition);
+}
+
+input::placeholder {
+  color: var(--text-muted);
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 10px var(--accent);
+}
+
+/* -------------------------
+   CARD COMPONENT
+------------------------- */
+.card {
+  background: rgba(10, 15, 31, 0.95);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  box-shadow: 0 0 15px rgba(0,255,255,0.15);
+  padding: 15px;
+  transition: var(--transition);
+}
+
+.card:hover {
+  transform: translateY(-6px) scale(1.05);
+  box-shadow: 0 0 25px rgba(0,255,255,0.5);
+}
+
+/* -------------------------
+   IMAGES
+------------------------- */
+img {
+  border-radius: var(--radius);
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border: 1px solid var(--border);
+  box-shadow: 0 0 10px rgba(0,255,255,0.3);
+}
+
+/* -------------------------
+   SUMMARY SECTION
+------------------------- */
+#summary {
+  background: rgba(5, 10, 25, 0.95);
+  padding: 20px;
+  border-radius: var(--radius);
+  margin-top: 20px;
+  border: 1px solid var(--border);
+  box-shadow: inset 0 0 15px rgba(0,255,255,0.25);
+}
